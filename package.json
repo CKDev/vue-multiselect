@@ -1,21 +1,33 @@
 {
-  "name": "multiselect",
+  "name": "@ckd/vue-multiselect",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve": "vue-cli-service serve demo/main.js",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "test": "vue-cli-service test:unit"
   },
+  "main": "src/multiselect.vue",
   "dependencies": {
-    "vue": "^2.5.21"
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/plugin-transform-runtime": "^7.2.0",
+    "@ckd/vue-select": "^0.1.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-vue": "^2.0.2",
+    "vue": "^2.5.21",
+    "vue-jest": "^3.0.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.2.0",
     "@vue/cli-plugin-eslint": "^3.2.0",
+    "@vue/cli-plugin-unit-jest": "^3.3.0",
     "@vue/cli-service": "^3.2.0",
     "@vue/eslint-config-prettier": "^4.0.1",
+    "@vue/test-utils": "^1.0.0-beta.28",
+    "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
+    "babel-jest": "^23.6.0",
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0",
     "node-sass": "^4.9.0",
@@ -31,15 +43,97 @@
       "plugin:vue/essential",
       "@vue/prettier"
     ],
-    "rules": {},
+    "rules": {
+      "space-before-function-paren": ["error", {
+          "anonymous": "never",
+          "named": "never",
+          "asyncArrow": "always"
+      }],
+      "keyword-spacing": ["error", {
+        "before": false,
+        "after": false,
+        "overrides": {
+          "from":     { "before": true, "after": true },
+          "default":  { "before": true, "after": true },
+          "return":   { "before": false, "after": true },
+          "if":       { "before": false, "after": false },
+          "else":     { "before": false, "after": false }
+        }
+      }],
+      "key-spacing": [2, {
+        "singleLine": {
+          "beforeColon": false,
+          "afterColon": true
+        },
+        "multiLine": {
+          "beforeColon": false,
+          "afterColon": true,
+          "align": "value"
+        }
+      }],
+      "space-before-blocks": ["error", {
+        "functions": "never",
+        "keywords": "never",
+        "classes": "always"
+      }],
+      "object-curly-spacing": ["error", "always", {
+        "arraysInObjects": false,
+        "objectsInObjects": true
+      }]
+    },
     "parserOptions": {
       "parser": "babel-eslint"
     }
+  },
+  "prettier": {
+    "singleQuote": true,
+    "semi": false,
+    "printWidth": 150
   },
   "postcss": {
     "plugins": {
       "autoprefixer": {}
     }
+  },
+  "babel": {
+    "presets": ["@vue/app"]
+  },
+  "jest": {
+    "verbose": true,
+    "moduleFileExtensions": [
+      "js",
+      "jsx",
+      "json",
+      "vue"
+    ],
+    "transform": {
+      "^.+\\.vue$": "vue-jest",
+      ".+\\.(css|styl|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$": "jest-transform-stub",
+      "^.+\\.jsx?$": "./tests/transform.js"
+    },
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/src/$1"
+    },
+    "snapshotSerializers": [
+      "jest-serializer-vue"
+    ],
+    "testMatch": [
+      "**/tests/unit/**/*.spec.(js|jsx|ts|tsx)|**/__tests__/*.(js|jsx|ts|tsx)"
+    ],
+    "testURL": "http://localhost/",
+    "transformIgnorePatterns": [
+      "node_modules/(?!(@ckd)/)"
+    ],
+    "coverageReporters": [
+      "html",
+      "text-summary"
+    ],
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*.{js,vue}",
+      "!**/node_modules/**"
+    ],
+    "setupFiles": ["<rootDir>/tests/helpers.js"]
   },
   "browserslist": [
     "> 1%",

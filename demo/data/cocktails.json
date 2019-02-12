@@ -1,0 +1,427 @@
+[
+  {
+    "label": "Rum",
+    "options": [
+      {
+        "label": "Blue Hawaii",
+        "value": "Blue Hawaii"
+      },
+      {
+        "label": "Brass Monkey",
+        "value": "Brass Monkey"
+      },
+      {
+        "label": "Bumbo",
+        "value": "Bumbo"
+      },
+      {
+        "label": "Bushwacker",
+        "value": "Bushwacker"
+      },
+      {
+        "label": "Caribou Lou",
+        "value": "Caribou Lou"
+      },
+      {
+        "label": "Cojito",
+        "value": "Cojito"
+      },
+      {
+        "label": "Cremat",
+        "value": "Cremat"
+      },
+      {
+        "label": "Cuba Libre",
+        "value": "Cuba Libre"
+      },
+      {
+        "label": "Cuban Sunset",
+        "value": "Cuban Sunset"
+      },
+      {
+        "label": "Daiquiri",
+        "value": "Daiquiri"
+      },
+      {
+        "label": "Dark 'N' Stormy",
+        "value": "Dark 'N' Stormy"
+      },
+      {
+        "label": "El Presidente",
+        "value": "El Presidente"
+      },
+      {
+        "label": "Fish House Punch",
+        "value": "Fish House Punch"
+      },
+      {
+        "label": "Flaming Dr Pepper",
+        "value": "Flaming Dr Pepper"
+      },
+      {
+        "label": "Flaming Volcano",
+        "value": "Flaming Volcano"
+      },
+      {
+        "label": "Fluffy Critter",
+        "value": "Fluffy Critter"
+      },
+      {
+        "label": "Grog",
+        "value": "Grog"
+      },
+      {
+        "label": "Gunfire",
+        "value": "Gunfire"
+      },
+      {
+        "label": "Hot buttered rum",
+        "value": "Hot buttered rum"
+      },
+      {
+        "label": "Hurricane",
+        "value": "Hurricane"
+      },
+      {
+        "label": "Jagertee",
+        "value": "Jagertee"
+      },
+      {
+        "label": "Long Island Iced Tea",
+        "value": "Long Island Iced Tea"
+      },
+      {
+        "label": "Macuá",
+        "value": "Macuá"
+      },
+      {
+        "label": "Mai-Tai",
+        "value": "Mai-Tai"
+      },
+      {
+        "label": "Mojito",
+        "value": "Mojito"
+      },
+      {
+        "label": "Painkiller",
+        "value": "Painkiller"
+      },
+      {
+        "label": "Piña Colada",
+        "value": "Piña Colada"
+      },
+      {
+        "label": "Planter's Punch",
+        "value": "Planter's Punch"
+      },
+      {
+        "label": "Royal Bermuda Cocktail",
+        "value": "Royal Bermuda Cocktail"
+      },
+      {
+        "label": "Rum Swizzle",
+        "value": "Rum Swizzle"
+      },
+      {
+        "label": "Ti' Punch",
+        "value": "Ti' Punch"
+      },
+      {
+        "label": "Tom and Jerry",
+        "value": "Tom and Jerry"
+      },
+      {
+        "label": "Tschunk",
+        "value": "Tschunk"
+      },
+      {
+        "label": "Yellow Bird",
+        "value": "Yellow Bird"
+      },
+      {
+        "label": "Zombie",
+        "value": "Zombie"
+      }
+    ]
+  },
+  {
+    "label": "Tequila",
+    "options": [
+      {
+        "label": "Bloody Aztec",
+        "value": "Bloody Aztec"
+      },
+      {
+        "label": "Chimayó Cocktail",
+        "value": "Chimayó Cocktail"
+      },
+      {
+        "label": "El Toro Loco Patron and Redbull",
+        "value": "El Toro Loco Patron and Redbull"
+      },
+      {
+        "label": "My Group",
+        "options": [
+          {
+            "label": "Juan Collins",
+            "value": "Juan Collins"
+          },
+          {
+            "label": "Long Island Iced Tea",
+            "value": "Long Island Iced Tea"
+          },
+          {
+            "label": "Margarita",
+            "value": "Margarita"
+          }
+        ]
+      },
+      {
+        "label": "Matador",
+        "value": "Matador"
+      },
+      {
+        "label": "Paloma",
+        "value": "Paloma"
+      },
+      {
+        "label": "Slammer Royale",
+        "value": "Slammer Royale"
+      },
+      {
+        "label": "Tequila Sunrise",
+        "value": "Tequila Sunrise"
+      },
+      {
+        "label": "Vampiro",
+        "value": "Vampiro"
+      }
+    ]
+  },
+  {
+    "label": "Vodka",
+    "options": [
+      {
+        "label": "Agent Orange",
+        "value": "Agent Orange"
+      },
+      {
+        "label": "Apple Martini",
+        "value": "Apple Martini"
+      },
+      {
+        "label": "Astro pop",
+        "value": "Astro pop"
+      },
+      {
+        "label": "Batida",
+        "value": "Batida"
+      },
+      {
+        "label": "Bay Breeze",
+        "value": "Bay Breeze"
+      },
+      {
+        "label": "Blue Lagoon",
+        "value": "Blue Lagoon"
+      },
+      {
+        "label": "Bull Shot",
+        "value": "Bull Shot"
+      },
+      {
+        "label": "Caesar",
+        "value": "Caesar"
+      },
+      {
+        "label": "Caipivodka",
+        "value": "Caipivodka"
+      },
+      {
+        "label": "Cape Cod",
+        "value": "Cape Cod"
+      },
+      {
+        "label": "Chi-Chi",
+        "value": "Chi-Chi"
+      },
+      {
+        "label": "Colombia",
+        "value": "Colombia"
+      },
+      {
+        "label": "Fizzy apple cocktail",
+        "value": "Fizzy apple cocktail"
+      },
+      {
+        "label": "Flirtini",
+        "value": "Flirtini"
+      },
+      {
+        "label": "Gimlet",
+        "value": "Gimlet"
+      },
+      {
+        "label": "Glowtini",
+        "value": "Glowtini"
+      },
+      {
+        "label": "Harrogate Nights",
+        "value": "Harrogate Nights"
+      },
+      {
+        "label": "Hi-fi",
+        "value": "Hi-fi"
+      },
+      {
+        "label": "Kensington Court Special",
+        "value": "Kensington Court Special"
+      },
+      {
+        "label": "Kremlin Colonel",
+        "value": "Kremlin Colonel"
+      },
+      {
+        "label": "Lemon Drop",
+        "value": "Lemon Drop"
+      },
+      {
+        "label": "Lime Rickey",
+        "value": "Lime Rickey"
+      },
+      {
+        "label": "Link Up",
+        "value": "Link Up"
+      },
+      {
+        "label": "Mudslide",
+        "value": "Mudslide"
+      },
+      {
+        "label": "Orange Tundra",
+        "value": "Orange Tundra"
+      },
+      {
+        "label": "Paralyzer",
+        "value": "Paralyzer"
+      },
+      {
+        "label": "Red Lotus",
+        "value": "Red Lotus"
+      },
+      {
+        "label": "Red Russian",
+        "value": "Red Russian"
+      },
+      {
+        "label": "Rose Kennedy Cocktail",
+        "value": "Rose Kennedy Cocktail"
+      },
+      {
+        "label": "Salmiakki Koskenkorva",
+        "value": "Salmiakki Koskenkorva"
+      },
+      {
+        "label": "Salty Dog",
+        "value": "Salty Dog"
+      },
+      {
+        "label": "Vodka Gimlet",
+        "value": "Vodka Gimlet"
+      },
+      {
+        "label": "Vodka Martini",
+        "value": "Vodka Martini"
+      },
+      {
+        "label": "Vodka McGovern",
+        "value": "Vodka McGovern"
+      },
+      {
+        "label": "Vodka Sunrise",
+        "value": "Vodka Sunrise"
+      },
+      {
+        "label": "White Russian",
+        "value": "White Russian"
+      }
+    ]
+  },
+  {
+    "label": "Whisky",
+    "options": [
+      {
+        "label": "Amber Moon",
+        "value": "Amber Moon"
+      },
+      {
+        "label": "Blue Blazer",
+        "value": "Blue Blazer"
+      },
+      {
+        "label": "Black Nail",
+        "value": "Black Nail"
+      },
+      {
+        "label": "Bobby Burns",
+        "value": "Bobby Burns"
+      },
+      {
+        "label": "Boulevardier",
+        "value": "Boulevardier"
+      },
+      {
+        "label": "Bourbon Lancer",
+        "value": "Bourbon Lancer"
+      },
+      {
+        "label": "Brooklyn",
+        "value": "Brooklyn"
+      },
+      {
+        "label": "Churchill",
+        "value": "Churchill"
+      },
+      {
+        "label": "Farnell",
+        "value": "Farnell"
+      },
+      {
+        "label": "Horsefeather",
+        "value": "Horsefeather"
+      },
+      {
+        "label": "Jack and Coke",
+        "value": "Jack and Coke"
+      },
+      {
+        "label": "Jungle Juice",
+        "value": "Jungle Juice"
+      },
+      {
+        "label": "Lynchburg Lemonade",
+        "value": "Lynchburg Lemonade"
+      },
+      {
+        "label": "Missouri Mule",
+        "value": "Missouri Mule"
+      },
+      {
+        "label": "Nixon",
+        "value": "Nixon"
+      },
+      {
+        "label": "Rob Roy",
+        "value": "Rob Roy"
+      },
+      {
+        "label": "Scotch and Soda",
+        "value": "Scotch and Soda"
+      },
+      {
+        "label": "Seven and Seven",
+        "value": "Seven and Seven"
+      }
+    ]
+  }
+]
