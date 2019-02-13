@@ -1,6 +1,6 @@
 # CKD Vue Multiselect
 
-The aim of this component, like @ckd/vue-select, is to provide a simple but highly functional multiselect input. As a bit of history, the goal is always to implement something that a close as humanly possible mimics native input element functionality. That being said, here's what the W3 says about using the `multiple` attribute of native select elements:
+The aim of this component, like @ckd/vue-select, is to provide a simple but highly functional multiselect input. As a bit of history, the goal is always to implement something that a close as humanly possible mimics native input element functionality. That being said, here's what W3 Schools says about using the `multiple` attribute of native select elements:
 
 ```
 Selecting multiple options vary in different operating systems and browsers:
@@ -11,7 +11,7 @@ Selecting multiple options vary in different operating systems and browsers:
 Because of the different ways of doing this, and because you have to inform the user that multiple selection is available, it is more user-friendly to use checkboxes instead.
 ```
 
-So since the W3 isn't even going to encourage implementation of native multiple select functionality, a new approach was needed.
+So since W3 Schools isn't even going to encourage implementation of native multiple select functionality, a new approach was needed.
 
 So why not just use vue-multiselect or some other existing vue based select component? Good question, and a valid one. Vue-multiselect is great, and if that's what you're familiar with or if it has the features you need, then go for it. As mentioned before, the goal of the CKD Multiselect is to keep it simple. Part of the reason for that is to avoid unnecessary complexities or unnecessary features. It was built with the idea that it could be extended and built upon to implement any features it's lacking. For example, vue-multiselect's "allow-empty" and "max" options are great, but I'm sure a large number of users don't require those features at all. CKD Multiselect doesn't implement those same features, but if needed the component could simply be extended and tweaked slightly to provide the same functionality. It's just that out of the box CKD Multiselect is simple, and functions in what one would hope is an intuitive way. That's the idea.
 
@@ -29,8 +29,8 @@ A simple demo of several component implementations can be found in the packages 
 
 Register the component
 ```
-import VMultiselect from '@ckd/vue-multiselect'
-Vue.component('v-multiselect', VMultiselect)
+import Multiselect from '@ckd/vue-multiselect'
+Vue.component('v-multiselect', Multiselect)
 ```
 
 Use the component in your markup
@@ -50,7 +50,7 @@ Options are always defined as an array of objects, where each object represents 
         "label": "Option B",
         "value": 1,
         "disabled": true,                                  // Disable the option
-        "item": "<strong>Option B is not allowed</strong>" // Define the "item" key to 
+        "item": "<strong>Option B is not allowed</strong>" // Define the "item" key to style the look of the text when in an option component
     },
     {
         "label": "Option C",
@@ -124,7 +124,7 @@ Other permitted options inherited from @ckd/vue-select:
 
 ## Tests
 
-Tests are written in jest, and can be run with `yarn test`
+Tests are written with jest, and can be run with `yarn test`
 
 ## TODO
 

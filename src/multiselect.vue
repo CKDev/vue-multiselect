@@ -9,7 +9,7 @@
         </template>
       </li>
       <span class="token-input">
-        <input v-test="{ id: 'search' }" ref="search" class="search" type="text" :placeholder="placeholder" tabindex="0" spellcheck="false" autocomplete="off" v-model="filter" @keydown.delete.stop="onDelete()" @keydown.esc="onToggle(null, false)" @keydown.up="onArrowPress($event, -1)" @keydown.down="onArrowPress($event, 1)" @keydown.enter="onEnter($event)" @keydown.tab="onTab($event)" @focus="onFocusSearch()" @blur="onBlur()" />
+        <input v-test="{ id: 'search' }" ref="search" class="search" type="text" :disabled="disabled" :placeholder="placeholder" tabindex="0" spellcheck="false" autocomplete="off" v-model="filter" @keydown.delete.stop="onDelete()" @keydown.esc="onToggle(false)" @keydown.up="onArrowPress($event, -1)" @keydown.down="onArrowPress($event, 1)" @keydown.enter="onEnter($event)" @keydown.tab="onTab($event)" @focus="onFocusSearch()" @blur="onBlur()" />
         <div ref="options" class="options" style="animation-duration: 0s;">
           <template v-for="opt in available">
             <component v-test="{ id: 'optgroup' }" :key="opt.state.index" v-if="opt.state.group" :is="optgroup" :group="opt"></component>
@@ -157,6 +157,9 @@ export default {
      * and open the dropdown if configured to do so
      */
     onFocusSearch: function(){
+      // Don't do anything if disabled
+      if(this.disabled) return
+
       // Reset the active token index, so none are highlighted
       this.tokenIndex = -1
 
@@ -457,6 +460,7 @@ export default {
     classes: function(){
       return [
         { 'is-focused': this.focused },
+        { 'is-disabled': this.disabled },
         { 'is-open': this.open },
         { 'is-mobile': this.isMobile() },
         this.direction
@@ -512,6 +516,10 @@ export default {
   background: #fff;
   cursor: text;
 
+  &.is-disabled {
+    cursor: default;
+  }
+
   &.is-open .options {
     z-index: 1;
     animation: show 150ms ease-out;
@@ -562,6 +570,7 @@ export default {
   font-size: 16px;
   line-height: 28px;
   min-width: 10px;
+  background-color: transparent;
 }
 
 .tokens {

@@ -12,7 +12,7 @@
         <div class="container">
           <p class="current"><strong>Current Value:</strong> {{selected_custom}}</p>
           <label class="input-label">Choose One</label>
-          <v-multiselect :options="options" :allow-suggest="true" placeholder="Search for a Cocktail" v-model="selected_custom"></v-multiselect>
+          <v-multiselect :options="options" :disabled="true" :allow-suggest="true" placeholder="Search for a Cocktail" v-model="selected_custom"></v-multiselect>
         </div>
 
         <div class="container">
