@@ -1,6 +1,6 @@
 {
   "name": "@ckd/vue-multiselect",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT",
   "homepage": "https://github.com/CKDev/vue-multiselect",
   "scripts": {
@@ -48,42 +48,73 @@
       "@vue/prettier"
     ],
     "rules": {
-      "space-before-function-paren": ["error", {
+      "space-before-function-paren": [
+        "error",
+        {
           "anonymous": "never",
           "named": "never",
           "asyncArrow": "always"
-      }],
-      "keyword-spacing": ["error", {
-        "before": false,
-        "after": false,
-        "overrides": {
-          "from":     { "before": true, "after": true },
-          "default":  { "before": true, "after": true },
-          "return":   { "before": false, "after": true },
-          "if":       { "before": false, "after": false },
-          "else":     { "before": false, "after": false }
         }
-      }],
-      "key-spacing": [2, {
-        "singleLine": {
-          "beforeColon": false,
-          "afterColon": true
-        },
-        "multiLine": {
-          "beforeColon": false,
-          "afterColon": true,
-          "align": "value"
+      ],
+      "keyword-spacing": [
+        "error",
+        {
+          "before": false,
+          "after": false,
+          "overrides": {
+            "from": {
+              "before": true,
+              "after": true
+            },
+            "default": {
+              "before": true,
+              "after": true
+            },
+            "return": {
+              "before": false,
+              "after": true
+            },
+            "if": {
+              "before": false,
+              "after": false
+            },
+            "else": {
+              "before": false,
+              "after": false
+            }
+          }
         }
-      }],
-      "space-before-blocks": ["error", {
-        "functions": "never",
-        "keywords": "never",
-        "classes": "always"
-      }],
-      "object-curly-spacing": ["error", "always", {
-        "arraysInObjects": false,
-        "objectsInObjects": true
-      }]
+      ],
+      "key-spacing": [
+        2,
+        {
+          "singleLine": {
+            "beforeColon": false,
+            "afterColon": true
+          },
+          "multiLine": {
+            "beforeColon": false,
+            "afterColon": true,
+            "align": "value"
+          }
+        }
+      ],
+      "space-before-blocks": [
+        "error",
+        {
+          "functions": "never",
+          "keywords": "never",
+          "classes": "always"
+        }
+      ],
+      "object-curly-spacing": [
+        "error",
+        "always",
+        {
+          "arraysInObjects": false,
+          "objectsInObjects": true
+        }
+      ]
     },
     "parserOptions": {
       "parser": "babel-eslint"
@@ -100,7 +131,9 @@
     }
   },
   "babel": {
-    "presets": ["@vue/app"]
+    "presets": [
+      "@vue/app"
+    ]
   },
   "jest": {
     "verbose": true,
@@ -137,7 +170,9 @@
       "src/**/*.{js,vue}",
       "!**/node_modules/**"
     ],
-    "setupFiles": ["<rootDir>/tests/helpers.js"]
+    "setupFiles": [
+      "<rootDir>/tests/helpers.js"
+    ]
   },
   "browserslist": [
     "> 1%",
