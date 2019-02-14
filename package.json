@@ -5,21 +5,22 @@
   "homepage": "https://github.com/CKDev/vue-multiselect",
   "scripts": {
     "serve": "vue-cli-service serve demo/main.js",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build --modern --target lib src/multiselect.vue",
     "lint": "vue-cli-service lint",
     "test": "vue-cli-service test:unit"
   },
   "main": "src/multiselect.vue",
+  "unpkg": "dist/@ckd/vue-multiselect.umd.min.js",
+  "files": [
+    "src",
+    "dist"
+  ],
   "dependencies": {
-    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
-    "@babel/plugin-transform-runtime": "^7.2.0",
-    "@ckd/vue-select": "^0.1.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-vue": "^2.0.2",
-    "vue": "^2.5.21",
-    "vue-jest": "^3.0.2"
+    "@ckd/vue-select": "^0.1.1-alpha.1"
   },
   "devDependencies": {
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/plugin-transform-runtime": "^7.2.0",
     "@vue/cli-plugin-babel": "^3.2.0",
     "@vue/cli-plugin-eslint": "^3.2.0",
     "@vue/cli-plugin-unit-jest": "^3.3.0",
@@ -29,10 +30,14 @@
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-vue": "^2.0.2",
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.0.1",
+    "vue": "^2.5.21",
+    "vue-jest": "^3.0.2",
     "vue-template-compiler": "^2.5.21"
   },
   "publishConfig": {

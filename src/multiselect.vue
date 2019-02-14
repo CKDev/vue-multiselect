@@ -1,5 +1,5 @@
 <template>
-  <div class="v-multiselect" :class="classes" :style="variables" @click="onFocusSearch()" @keydown.delete="onRemove(tokenIndex)" @keydown.tab="onTab($event)" @keydown.left="onSeek($event, -1)" @keydown.right="onSeek($event, 1)">
+  <div class="v-multiselect" :class="classes" :style="variables" @click="onFocusSearch()" @keydown.delete="onRemove(tokenIndex)" @keydown.tab="onTab($event)" @keydown.left="onSeek(-1)" @keydown.right="onSeek(1)">
     <ul class="tokens">
       <li v-test="{ id: 'token' }" v-for="option in selections" class="token" :key="option.state.index" :class="{ 'is-active': isTokenActive(option.state.index) }" tabindex="0" @click.stop="onFocusToken(option.state.index)" @focus="onFocusToken(option.state.index)" @blur="onBlur()">
         <slot v-if="!!$scopedSlots.token" name="token" :option="option" :remove="() => onRemove(option.state.index)" />
@@ -9,17 +9,17 @@
         </template>
       </li>
       <span class="token-input">
-        <input v-test="{ id: 'search' }" ref="search" class="search" type="text" :disabled="disabled" :placeholder="placeholder" tabindex="0" spellcheck="false" autocomplete="off" v-model="filter" @keydown.delete.stop="onDelete()" @keydown.esc="onToggle(false)" @keydown.up="onArrowPress($event, -1)" @keydown.down="onArrowPress($event, 1)" @keydown.enter="onEnter($event)" @keydown.tab="onTab($event)" @focus="onFocusSearch()" @blur="onBlur()" />
+        <input v-test="{ id: 'search' }" ref="search" class="search" type="text" :disabled="disabled" :placeholder="placeholder" tabindex="0" spellcheck="false" autocomplete="off" v-model="filter" @keydown.delete.stop="onDelete()" @keydown.esc="onToggle(false)" @keydown.up.prevent="onArrowPress(-1)" @keydown.down.prevent="onArrowPress(1)" @keydown.enter="onEnter()" @keydown.tab="onTab($event)" @focus="onFocusSearch()" @blur="onBlur()" />
         <div ref="options" class="options" style="animation-duration: 0s;">
           <template v-for="opt in available">
             <component v-test="{ id: 'optgroup' }" :key="opt.state.index" v-if="opt.state.group" :is="optgroup" :group="opt"></component>
-            <component v-test="{ id: 'option' }" v-else :is="option" :key="opt.state.index" :option="opt" @click.native.stop="onClickOption(opt.state.index)" @mouseover.native="onHover($event, opt.state.index)"></component>
+            <component v-test="{ id: 'option' }" v-else :is="option" :key="opt.state.index" :option="opt" @click.native.stop="onClickOption(opt.state.index)" @mouseover.native="onHover(opt.state.index)"></component>
           </template>
           <template v-if="hasSuggestion()">
-            <div v-if="!!$scopedSlots.suggestion" @click.stop="onClickOption(suggestion.state.index)" @mouseover="onHover($event, suggestion.state.index)">
+            <div v-if="!!$scopedSlots.suggestion" @click.stop="onClickOption(suggestion.state.index)" @mouseover="onHover(suggestion.state.index)">
               <slot name="suggestion" :suggestion="suggestion" />
             </div>
-            <component v-else v-test="{ id: 'option' }" :is="option" :option="suggestion" @click.native.stop="onClickOption(suggestion.state.index)" @mouseover.native="onHover($event, suggestion.state.index)"></component>
+            <component v-else v-test="{ id: 'option' }" :is="option" :option="suggestion" @click.native.stop="onClickOption(suggestion.state.index)" @mouseover.native="onHover(suggestion.state.index)"></component>
           </template>
         </div>
       </span>
@@ -51,7 +51,7 @@ export default {
     }
   },
   mounted: function(){
-    // Emit the necessary 
+    // Emit the necessary change/input event initially, so the current value is known
     this.onChange()
 
     // Create a placeholder div with the placeholder text, needed to calcuate
@@ -78,7 +78,7 @@ export default {
      * When current selections change, emit appropriate events
      * input is for compatibility with v-model
      */
-    selections: function(new_selections){
+    selections: function(){
       this.onChange()
     },
     /**
@@ -208,7 +208,7 @@ export default {
     onRemove: function(idx){
       this.removeSelection(idx)
     },
-    onSeek: function(event, offset){
+    onSeek: function(offset){
       // Only seek between tokens if the search input field is blank
       // and we are moving to the left, or currently have an active token
       if(this.filter == '' && (offset < 0 || this.tokenIndex > -1)){
@@ -241,7 +241,7 @@ export default {
      * When the enter key is pressed, select the implied option,
      * if any, and then focus back on the input field
      */
-    onEnter: function(event){
+    onEnter: function(){
       if(this.hasImpliedOption()){
         this.selectImpliedOption()
       }
@@ -376,12 +376,8 @@ export default {
         this.left = location.left
       }
     },
-    onArrowPress: function(event, offset){
+    onArrowPress: function(offset){
       if(this.openOnArrow) this.open = true
-
-      // Don't propagate (may cause things like scrolling down the page)
-      event.preventDefault()
-      event.stopPropagation()
 
       // If not seeking, add the class
       if(!this.$el.classList.contains('is-seeking')){
@@ -401,17 +397,9 @@ export default {
         // If hovering over an option, that option should be highlighted
         this.highlightIndex = this.hoverIndex
       }else{
-        if(offset < 0){
-          // Moving up the list
-          const candidates = this.list.slice(0, this.highlightIndex).filter(o => !o.state.group && !o.disabled && permitted.includes(o.state.index))
-          // If any options to move to, move to the closest (last) one in the list
-          if(candidates.length) this.highlightIndex = candidates.pop().state.index
-        }else if(offset > 0){
-          // Moving down the list
-          const candidates = this.list.slice(this.highlightIndex + 1, this.list.length - 1).filter(o => !o.state.group && !o.disabled && permitted.includes(o.state.index))
-          // If any options to move to, move to the closest (first) one in the list
-          if(candidates.length) this.highlightIndex = candidates.shift().state.index
-        }
+        // Moving up or down the list, find the next option by the offset given
+        const nextIndex = permitted[permitted.indexOf(this.hoverIndex) + offset]
+        if(!isNaN(nextIndex)) this.highlightIndex = nextIndex
       }
 
       // Consider that highlighting in this context is the same as hovering
@@ -503,7 +491,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .v-multiselect {
   display: inline-block;
   min-width: 10px;
@@ -520,7 +508,12 @@ export default {
     cursor: default;
   }
 
-  &.is-open .options {
+  /**
+   * Show the options dropdown when the is-open class exists
+   * Do NOT show it if it's empty (no options) as it may have
+   * other effects applied that are still visible, i.e. - shadows
+   */
+  &.is-open .options:not(:empty) {
     z-index: 1;
     animation: show 150ms ease-out;
     animation-fill-mode: forwards;
@@ -567,7 +560,6 @@ export default {
   border: 0;
   outline: none;
   padding: 0;
-  font-size: 16px;
   line-height: 28px;
   min-width: 10px;
   background-color: transparent;
@@ -599,7 +591,6 @@ export default {
 .token {
   background-color: #f1f1f1;
   padding-left: 8px;
-  font-size: 16px;
   line-height: 28px;
   cursor: pointer;
   margin-bottom: 8px;
