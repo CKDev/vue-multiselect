@@ -13,7 +13,8 @@
   "unpkg": "dist/@ckd/vue-multiselect.umd.min.js",
   "files": [
     "src",
-    "dist"
+    "dist",
+    "directives"
   ],
   "dependencies": {
     "@ckd/vue-select": "^0.1.1-alpha.1"
