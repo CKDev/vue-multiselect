@@ -18,7 +18,7 @@ So why not just use vue-multiselect or some other existing vue based select comp
 ## Installation
 
 ```
-yarn add @ckd/vue-multiselect@0.1.1-alpha.3
+yarn add @ckd/vue-multiselect@0.1.1-alpha.4
 ```
 
 ## Demo
@@ -27,13 +27,29 @@ A simple demo of several component implementations can be found in the packages 
 
 ## Usage
 
-Register the component
+Register the component for use in a Vue application
+
 ```
 import Multiselect from '@ckd/vue-multiselect'
 Vue.component('v-multiselect', Multiselect)
 ```
 
-Use the component in your markup
+or, use UMD:
+
+```
+<script src="https://unpkg.com/vue"></script>
+<script src="https://unpkg.com/@ckd/vue-multiselect"></script>
+
+<script>
+new Vue({
+  components: {
+    VMultiselect: window['@ckd/vue-multiselect']
+  }
+}).$mount('#app')
+</script>
+```
+
+Then, use the component in your markup
 ```
 <v-multiselect v-model="selections" :options="options" :allow-suggest="true"></v-multiselect>
 ```

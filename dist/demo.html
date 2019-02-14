@@ -1,0 +1,16 @@
+<meta charset="utf-8">
+<title>@ckd/vue-multiselect demo</title>
+<script src="https://unpkg.com/vue"></script>
+<script src="./@ckd/vue-multiselect.umd.js"></script>
+
+<div id="app">
+  <demo placeholder="Choose an Option" :allow-suggest="true" :options="[{ label: 'Option A', value: 0 }, { label: 'Option B', value: 1 }, { label: 'Option C', value: 2 }]"></demo>
+</div>
+
+<script>
+new Vue({
+  components: {
+    demo: window['@ckd/vue-multiselect']
+  }
+}).$mount('#app')
+</script>
