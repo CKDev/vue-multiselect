@@ -18,7 +18,7 @@ So why not just use vue-multiselect or some other existing vue based select comp
 ## Installation
 
 ```
-yarn add @ckd/vue-multiselect@alpha
+yarn add @ckd/vue-multiselect@0.1.1-alpha.3
 ```
 
 ## Demo
