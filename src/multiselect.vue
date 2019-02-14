@@ -491,7 +491,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .v-multiselect {
   display: inline-block;
   min-width: 10px;
