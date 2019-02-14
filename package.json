@@ -17,7 +17,7 @@
     "directives"
   ],
   "dependencies": {
-    "@ckd/vue-select": "^0.1.1-alpha.1"
+    "@ckd/vue-select": "^0.1.1-alpha.3"
   },
   "devDependencies": {
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
