@@ -18,7 +18,7 @@ So why not just use vue-multiselect or some other existing vue based select comp
 ## Installation
 
 ```
-yarn add @ckd/vue-multiselect@0.1.1-alpha.4
+yarn add @ckd/vue-multiselect@latest
 ```
 
 ## Demo
@@ -31,6 +31,15 @@ Register the component for use in a Vue application
 
 ```
 import Multiselect from '@ckd/vue-multiselect'
+
+// Import vue-select css, since vue-multiselect is built
+// on top of it (no dropdown styles exist within vue-multiselect)
+import '@ckd/vue-select/dist/@ckd/vue-select.css'
+
+// Import vue-multiselect stylesheet, which contains multiselect
+// specific styles, like tokens
+import '@ckd/vue-multiselect/dist/@ckd/vue-multiselect.css'
+
 Vue.component('v-multiselect', Multiselect)
 ```
 
@@ -39,6 +48,9 @@ or, use UMD:
 ```
 <script src="https://unpkg.com/vue"></script>
 <script src="https://unpkg.com/@ckd/vue-multiselect"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/@ckd/vue-select@latest/dist/@ckd/vue-select.css">
+<link rel="stylesheet" href="https://unpkg.com/@ckd/vue-multiselect@latest/dist/@ckd/vue-multiselect.css">
 
 <script>
 new Vue({
@@ -137,6 +149,7 @@ Other permitted options inherited from @ckd/vue-select:
 | selected    | String / Number    | `null`         | If defined, auto selects the option in the list with the matching value. If more than one option exists with the same value, the first will be selected.                                                                                                                                                                                                                                                                                            |
 | option      | Vue Component      | VOption        | Allows overriding the rendered option component for each option in the dropdown, to further customize the markup/layout. See the package source's option.vue file to reference the current markup/attributes.                                                                                                                                                                                                                                       |
 | optgroup    | Vue Component      | VOptgroup      | Allows overriding the rendered optgroup component for each "optgroup" in the dropdown. See the package source's optgroup.vue file to reference the current optgroup markup/attributes.                                                                                                                                                                                                                                                              |
+| value    | Array      | (empty array)      | Sets the currently selected options. While this prop also exists in vue-select, in the standard select component valid values are of type `Number` or `String`, but in vue-multiselect they must be defined as an `Array` of option values, since multiple selections are possible. Optionally, you can bind this value to data or a computed property in a parent component with [v-model](https://vuejs.org/v2/guide/components.html#Using-v-model-on-Components)                                                                                                                                                                                                                                                               |
 
 ## Tests
 

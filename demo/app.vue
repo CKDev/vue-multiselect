@@ -394,6 +394,8 @@
 <script>
 import VMultiselect from '@/multiselect.vue'
 
+import '@ckd/vue-select/dist/@ckd/vue-select.css'
+
 import States from './data/states.json'
 import Countries from './data/countries.json'
 import Cocktails from './data/cocktails.json'

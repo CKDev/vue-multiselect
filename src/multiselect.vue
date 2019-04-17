@@ -48,6 +48,10 @@ export default {
     allowSuggest: {
       type: Boolean,
       default: false
+    },
+    value: {
+      type: Array,
+      default: () => []
     }
   },
   mounted: function(){

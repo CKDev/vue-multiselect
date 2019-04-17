@@ -657,10 +657,10 @@
     lodash "^4.17.10"
     to-fast-properties "^2.0.0"
 
-"@ckd/vue-select@^0.1.1-alpha.1":
-  version "0.1.1-alpha.1"
-  resolved "https://registry.yarnpkg.com/@ckd/vue-select/-/vue-select-0.1.1-alpha.1.tgz#3cd0551a9c797ae7789422198c410f0bcf757436"
-  integrity sha512-ecp/Unl394AL499CFgR8iK4kwIWHEbOT4SlaB3BWAxirdjwF/ojh3BCPQf8DBV2BbKn2r/K4ZY0xzwgLMl06Aw==
+"@ckd/vue-select@^0.1.1-alpha.8":
+  version "0.1.1-alpha.8"
+  resolved "https://registry.yarnpkg.com/@ckd/vue-select/-/vue-select-0.1.1-alpha.8.tgz#c2fdc1645b9daa4f194e2ee27f3e984c47625a9d"
+  integrity sha512-NobeBpn4iQP85tzOkkcVQm3ZSruztzUZuiviNEuSMNWqDKQkQN7Me6JkTjTjqjod3dNwZdLhWaEu7YwlenPOmQ==
   dependencies:
     debounce "^1.2.0"
     node-sass "^4.9.0"
