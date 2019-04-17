@@ -64,19 +64,7 @@ export default {
     // the width of the actual placeholder. This div is removed immediately after
     this.$nextTick(() => {
       // Ensure our placeholder element for measuring width has the necessary css scope attributes
-      const scopes = Object.values(this.$refs.search.attributes).filter(a => /^data-v-.*$/.test(a.name))
-      const placeholder = document.createElement('DIV')
-
-      scopes.forEach(a => placeholder.setAttribute(a.name, ''))
-
-      placeholder.style.visibility = 'hidden'
-      placeholder.style.display = 'inline-block'
-      placeholder.className = this.$refs.search.className
-      placeholder.appendChild(document.createTextNode(this.placeholder))
-      this.$el.querySelector('.token-input').appendChild(placeholder)
-
-      this.$refs.search.style.width = `${placeholder.offsetWidth}px`
-      placeholder.remove()
+      this.setSearchInputWidth(this.placeholder)
     })
   },
   watch: {
@@ -109,6 +97,9 @@ export default {
       // Set the current status of our drop down
       this.open = new_value.trim() != '' && (this.available.length > 0 || !!this.suggestion)
 
+      // Expand the search input text box to fit the filter text
+      this.setSearchInputWidth(new_value)
+
       // Re-position the dropdown
       this.$nextTick(() => {
         this.calcPosition()
@@ -140,6 +131,26 @@ export default {
     }
   },
   methods: {
+    /**
+     * Calculate the width of the given text and
+     * set the search input text box width to match
+     */
+    setSearchInputWidth: function(text){
+      // Ensure our placeholder element for measuring width has the necessary css scope attributes
+      const scopes = Object.values(this.$refs.search.attributes).filter(a => /^data-v-.*$/.test(a.name))
+      const comparison = document.createElement('DIV')
+
+      scopes.forEach(a => comparison.setAttribute(a.name, ''))
+
+      comparison.style.visibility = 'hidden'
+      comparison.style.display = 'inline-block'
+      comparison.className = this.$refs.search.className
+      comparison.appendChild(document.createTextNode(text))
+      this.$el.querySelector('.token-input').appendChild(comparison)
+
+      this.$refs.search.style.width = `${comparison.offsetWidth}px`
+      comparison.remove()
+    },
     /**
      * Emit appropriate events with the mapped selection values
      * The input event is for compatibility with v-model
@@ -568,7 +579,10 @@ export default {
   padding: 0;
   line-height: 28px;
   min-width: 10px;
+  max-width: 100%;
   background-color: transparent;
+  font-family: inherit;
+  font-size: inherit;
 }
 
 .tokens {
@@ -655,6 +669,7 @@ export default {
   position: relative;
   background: inherit;
   margin: 0 8px 8px;
+  max-width: calc(100% - 16px); // 100%, minus the left/right margin
 }
 
 .options {
@@ -669,6 +684,10 @@ export default {
   box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.4);
   animation: hide 150ms ease-out;
   animation-fill-mode: forwards;
+}
+
+.suggestion {
+  cursor: pointer;
 }
 
 .select {
