@@ -8,21 +8,23 @@
           <button v-if="!isMobile()" @click.stop="onRemove(option.state.index)" tabindex="-1" class="token-remove"></button>
         </template>
       </li>
-      <span class="token-input">
+      <div class="token-input">
         <input v-test="{ id: 'search' }" ref="search" class="search" type="text" :disabled="disabled" :placeholder="placeholder" tabindex="0" spellcheck="false" autocomplete="off" v-model="filter" @keydown.delete.stop="onDelete()" @keydown.esc="onToggle(false)" @keydown.up.prevent="onArrowPress(-1)" @keydown.down.prevent="onArrowPress(1)" @keydown.enter="onEnter()" @keydown.tab="onTab($event)" @focus="onFocusSearch()" @blur="onBlur()" />
         <div ref="options" class="options" style="animation-duration: 0s;">
-          <template v-for="opt in available">
-            <component v-test="{ id: 'optgroup' }" :key="opt.state.index" v-if="opt.state.group" :is="optgroup" :group="opt"></component>
-            <component v-test="{ id: 'option' }" v-else :is="option" :key="opt.state.index" :option="opt" @click.native.stop="onClickOption(opt.state.index)" @mouseover.native="onHover(opt.state.index)"></component>
-          </template>
-          <template v-if="hasSuggestion()">
+          <div class="list">
+            <template v-for="opt in available">
+              <component v-test="{ id: 'optgroup' }" v-if="opt.state.group" :key="opt.state.index" :is="optgroup" :group="opt"></component>
+              <component v-test="{ id: 'option' }" v-else :is="option" :key="opt.state.index" :option="opt" @click.native.stop="onClickOption(opt.state.index)" @mouseover.native="onHover(opt.state.index)"></component>
+            </template>
+          </div>
+          <div v-if="hasSuggestion()" class="suggestion">
             <div v-if="!!$scopedSlots.suggestion" @click.stop="onClickOption(suggestion.state.index)" @mouseover="onHover(suggestion.state.index)">
               <slot name="suggestion" :suggestion="suggestion" />
             </div>
             <component v-else v-test="{ id: 'option' }" :is="option" :option="suggestion" @click.native.stop="onClickOption(suggestion.state.index)" @mouseover.native="onHover(suggestion.state.index)"></component>
-          </template>
+          </div>
         </div>
-      </span>
+      </div>
     </ul>
     <select ref="select" class="select" tabindex="-1" multiple v-html="getOptionsHtml()" @change="onSelectChanged($event)"></select>
   </div>
