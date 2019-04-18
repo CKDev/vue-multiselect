@@ -657,14 +657,12 @@
     lodash "^4.17.10"
     to-fast-properties "^2.0.0"
 
-"@ckd/vue-select@^0.1.1-alpha.8":
-  version "0.1.1-alpha.8"
-  resolved "https://registry.yarnpkg.com/@ckd/vue-select/-/vue-select-0.1.1-alpha.8.tgz#c2fdc1645b9daa4f194e2ee27f3e984c47625a9d"
-  integrity sha512-NobeBpn4iQP85tzOkkcVQm3ZSruztzUZuiviNEuSMNWqDKQkQN7Me6JkTjTjqjod3dNwZdLhWaEu7YwlenPOmQ==
+"@ckd/vue-select@^0.1.1-alpha.9":
+  version "0.1.1-alpha.9"
+  resolved "https://registry.yarnpkg.com/@ckd/vue-select/-/vue-select-0.1.1-alpha.9.tgz#2e41d3585a1bcf0b9cb62db7174a5c531add3d26"
+  integrity sha512-ix1zRjA3X1AckYSTSkmtaoWjXu8Lquvnp1fd+akhZ331AP80MaXwuI3KVW5z4zyfBUXGR7+FaR3XNVNSLkqgkA==
   dependencies:
     debounce "^1.2.0"
-    node-sass "^4.9.0"
-    sass-loader "^7.0.1"
 
 "@intervolga/optimize-cssnano-plugin@^1.0.5":
   version "1.0.6"

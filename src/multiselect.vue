@@ -1,12 +1,12 @@
 <template>
   <div class="v-multiselect" :class="classes" :style="variables" @click="onFocusSearch()" @keydown.delete="onRemove(tokenIndex)" @keydown.tab="onTab($event)" @keydown.left="onSeek(-1)" @keydown.right="onSeek(1)">
     <ul class="tokens">
-      <li v-test="{ id: 'token' }" v-for="option in selections" class="token" :key="option.state.index" :class="{ 'is-active': isTokenActive(option.state.index) }" tabindex="0" @click.stop="onFocusToken(option.state.index)" @focus="onFocusToken(option.state.index)" @blur="onBlur()">
-        <slot v-if="!!$scopedSlots.token" name="token" :option="option" :remove="() => onRemove(option.state.index)" />
-        <template v-else>
+      <li v-test="{ id: 'token' }" v-for="option in selections" :key="option.state.index" tabindex="0" @click.stop="onFocusToken(option.state.index)" @focus="onFocusToken(option.state.index)" @blur="onBlur()">
+        <slot v-if="!!$scopedSlots.token" name="token" class="token" :option="option" :remove="() => onRemove(option.state.index)" :class="{ 'is-active': isTokenActive(option.state.index) }" />
+        <div v-else class="token" :class="{ 'is-active': isTokenActive(option.state.index) }">
           <span v-html="option.label"></span>
           <button v-if="!isMobile()" @click.stop="onRemove(option.state.index)" tabindex="-1" class="token-remove"></button>
-        </template>
+        </div>
       </li>
       <div class="token-input">
         <input v-test="{ id: 'search' }" ref="search" class="search" type="text" :disabled="disabled" :placeholder="placeholder" tabindex="0" spellcheck="false" autocomplete="off" v-model="filter" @keydown.delete.stop="onDelete()" @keydown.esc="onToggle(false)" @keydown.up.prevent="onArrowPress(-1)" @keydown.down.prevent="onArrowPress(1)" @keydown.enter="onEnter()" @keydown.tab="onTab($event)" @focus="onFocusSearch()" @blur="onBlur()" />
