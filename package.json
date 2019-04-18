@@ -1,6 +1,6 @@
 {
   "name": "@ckd/vue-multiselect",
-  "version": "0.1.1-alpha.7",
+  "version": "0.1.1-alpha.8",
   "license": "MIT",
   "homepage": "https://github.com/CKDev/vue-multiselect",
   "scripts": {
@@ -17,7 +17,7 @@
     "directives"
   ],
   "dependencies": {
-    "@ckd/vue-select": "^0.1.1-alpha.8"
+    "@ckd/vue-select": "^0.1.1-alpha.9"
   },
   "devDependencies": {
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
@@ -42,7 +42,8 @@
     "vue-template-compiler": "^2.5.21"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "tag": "alpha"
   },
   "eslintConfig": {
     "root": true,
