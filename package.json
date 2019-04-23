@@ -1,6 +1,6 @@
 {
   "name": "@ckd/vue-multiselect",
-  "version": "0.1.1-alpha.14",
+  "version": "0.1.1-alpha.15",
   "license": "MIT",
   "homepage": "https://github.com/CKDev/vue-multiselect",
   "scripts": {
@@ -17,7 +17,7 @@
     "directives"
   ],
   "dependencies": {
-    "@ckd/vue-select": "^0.1.1-alpha.9"
+    "@ckd/vue-select": "^0.1.1-alpha.10"
   },
   "devDependencies": {
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
