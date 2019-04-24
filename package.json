@@ -1,6 +1,6 @@
 {
   "name": "@ckd/vue-multiselect",
-  "version": "0.1.1-alpha.18",
+  "version": "0.1.1-alpha.19",
   "license": "MIT",
   "homepage": "https://github.com/CKDev/vue-multiselect",
   "scripts": {
@@ -17,7 +17,8 @@
     "directives"
   ],
   "dependencies": {
-    "@ckd/vue-select": "^0.1.1-alpha.13"
+    "@ckd/vue-select": "^0.1.1-alpha.13",
+    "uglifyjs-webpack-plugin": "^2.1.2"
   },
   "devDependencies": {
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
