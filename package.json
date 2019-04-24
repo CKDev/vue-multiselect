@@ -1,6 +1,6 @@
 {
   "name": "@ckd/vue-multiselect",
-  "version": "0.1.1-alpha.20",
+  "version": "0.1.1-alpha.21",
   "license": "MIT",
   "homepage": "https://github.com/CKDev/vue-multiselect",
   "scripts": {
@@ -17,8 +17,7 @@
     "directives"
   ],
   "dependencies": {
-    "@ckd/vue-select": "^0.1.1-alpha.15",
-    "uglifyjs-webpack-plugin": "^2.1.2"
+    "@ckd/vue-select": "^0.1.1-alpha.15"
   },
   "devDependencies": {
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
@@ -38,6 +37,7 @@
     "eslint-plugin-vue": "^5.0.0",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.0.1",
+    "uglifyjs-webpack-plugin": "^2.1.2",
     "vue": "^2.5.21",
     "vue-jest": "^3.0.2",
     "vue-template-compiler": "^2.5.21"
