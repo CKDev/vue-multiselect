@@ -1,7 +1,7 @@
 <template>
   <div class="v-multiselect" :class="classes" :style="variables" @click="onFocusSearch()" @keydown.delete="onRemove(tokenIndex)" @keydown.tab="onTab($event)" @keydown.left="onSeek(-1)" @keydown.right="onSeek(1)">
     <ul class="tokens">
-      <li v-test="{ id: 'token' }" v-for="option in selections" class="token" :class="{ 'is-active': isTokenActive(option.state.index) }" :key="option.state.index" tabindex="0" @click.stop="onFocusToken(option.state.index)" @focus="onFocusToken(option.state.index)" @blur="onBlur()">
+      <li v-test="{ id: 'token' }" v-for="option in selections" class="token" :class="{ 'is-active': isTokenActive(option.state.index) }" :key="option.state.index" tabindex="0" @click.stop="onFocusToken(option.state.index)" @focus="onFocusToken(option.state.index)">
         <slot v-if="!!$scopedSlots.token" name="token" :option="option" :remove="() => onRemove(option.state.index)" :class="{ 'is-active': isTokenActive(option.state.index) }" />
         <template v-else>
           <span v-html="option.label"></span>
@@ -9,7 +9,7 @@
         </template>
       </li>
       <div class="token-input">
-        <input v-test="{ id: 'search' }" ref="search" class="search" type="text" :disabled="disabled" :placeholder="placeholder" tabindex="0" spellcheck="false" autocomplete="off" v-model="filter" @keydown.delete.stop="onDelete()" @keydown.esc="onToggle(false)" @keydown.up.prevent="onArrowPress(-1)" @keydown.down.prevent="onArrowPress(1)" @keydown.enter="onEnter()" @keydown.tab="onTab($event)" @focus="onFocusSearch()" @blur="onBlur()" />
+        <input v-test="{ id: 'search' }" ref="search" class="search" type="text" :disabled="disabled" :placeholder="placeholder" tabindex="0" spellcheck="false" autocomplete="off" v-model="filter" @keydown.delete.stop="onDelete()" @keydown.esc="onToggle(false)" @keydown.up.prevent="onArrowPress(-1)" @keydown.down.prevent="onArrowPress(1)" @keydown.enter="onEnter()" @keydown.tab="onTab($event)" />
         <div ref="options" class="options" style="animation-duration: 0s;">
           <div class="list">
             <template v-for="opt in available">
@@ -74,6 +74,10 @@ export default {
      */
     selections: function(){
       this.onChange()
+
+      this.$nextTick(() => {
+        this.calcPosition()
+      })
     },
     /**
      * When current filter text changes, 
@@ -98,7 +102,7 @@ export default {
       this.open = new_value.trim() != '' && (this.available.length > 0 || !!this.suggestion)
 
       // Expand the search input text box to fit the filter text
-      this.setSearchInputWidth(new_value)
+      this.setSearchInputWidth(new_value || this.placeholder)
 
       // Re-position the dropdown
       this.$nextTick(() => {
@@ -160,20 +164,11 @@ export default {
       this.$emit('change', this.selections.map(o => o.value))
     },
     /**
-     * Close the dropdown and remove the focus when a token
-     * or the input field is blurred. Either value may be reset
-     * immediately after this depending on what receives the new focus
-     */
-    onBlur: function(){
-      this.open = false
-      this.focused = false
-    },
-    /**
      * Triggered to force focus on the search input
      * Will reset the active token, set the current focused state
      * and open the dropdown if configured to do so
      */
-    onFocusSearch: function(){
+    onFocusSearch: function(reveal = true){
       // Don't do anything if disabled
       if(this.disabled) return
 
@@ -186,12 +181,12 @@ export default {
       if(this.isMobile()) return
 
       // If set to open the options list on focus, open it
-      if(this.openOnFocus){
+      if(this.openOnFocus && reveal){
         this.open = true
       }
 
       // Ensure the input is actually focused (if not already), as this method
-      // may be called when the input does not already focused
+      // may be called when the input does not already have focus
       if(document.activeElement != this.$refs.search){
         this.$refs.search.focus()
       }
@@ -215,6 +210,9 @@ export default {
       if(this.filter == ''){
         const prev = this.selections.pop()
         if(prev) this.removeSelection(prev.state.index)
+
+        // Re-focus on the search input field
+        this.onFocusSearch(false)
       }
     },
     /**
@@ -224,6 +222,8 @@ export default {
      */
     onRemove: function(idx){
       this.removeSelection(idx)
+      // Re-focus on the search input field
+      this.onFocusSearch(false)
     },
     onSeek: function(offset){
       // Only seek between tokens if the search input field is blank
@@ -372,9 +372,6 @@ export default {
         option.state.hovered = false
         option.state.highlighted = false
       }
-
-      // Re-focus on the search input field
-      this.onFocusSearch()
     },
     calcPosition: function(){
       if(this.$refs.search && this.$refs.options){

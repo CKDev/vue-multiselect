@@ -211,7 +211,7 @@ describe('multiselect.vue', () => {
   describe('with prop.open-on-focus', () => {
     it('should open when search field is focused', () => {
       expect(wrapper.vm.open).toBeFalsy()
-      wrapper.find('[data-test-id="search"]').trigger('focus')
+      wrapper.find('[data-test-id="search"]').trigger('click')
       expect(wrapper.vm.open).toBeTruthy()
     })
   })
