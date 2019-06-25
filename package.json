@@ -1,6 +1,6 @@
 {
   "name": "@ckd/vue-multiselect",
-  "version": "0.1.1-alpha.22",
+  "version": "0.1.1-alpha.23",
   "license": "MIT",
   "homepage": "https://github.com/CKDev/vue-multiselect",
   "scripts": {
@@ -172,6 +172,7 @@
       "html",
       "text-summary"
     ],
+    "coverageDirectory": "<rootDir>/coverage/",
     "collectCoverage": true,
     "collectCoverageFrom": [
       "src/**/*.{js,vue}",
